@@ -2,7 +2,7 @@ resource "aws_vpc" "main" {
   cidr_block           = var.cidr_block
   enable_dns_support   = true
   enable_dns_hostnames = true
-  tags                 = merge(var.tags, { name = "${var.env}-vpc" })
+  tags                 = merge(var.tags, { Name = "${var.env}-vpc" })
 }
 
 module "subnets" {
@@ -21,5 +21,5 @@ module "subnets" {
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.main.id
 
-  tags                 = merge(var.tags, { name = "${var.env}-igw" })
+  tags                 = merge(var.tags, { Name = "${var.env}-igw" })
 }
