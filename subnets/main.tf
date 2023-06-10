@@ -16,6 +16,6 @@ resource "aws_route_table" "main" {
 
 resource "aws_route_table_association" "associates" {
   count   = length(var.cidr_block)
-  subnet_id      = aws_subnet.main.[count.index].id
-  route_table_id = aws_route_table.main.[count.index].id
+  subnet_id      = aws_subnet.main[count.index].id
+  route_table_id = aws_route_table.main[count.index].id
 }
