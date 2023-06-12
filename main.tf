@@ -56,10 +56,10 @@ resource "aws_route" "ngw" {
 
 
 resource "aws_vpc_peering_connection" "peer" {
-  vpc_id        = aws_vpc.main.id
-  peer_vpc_id   = var.default_vpc_id
   peer_owner_id = data.aws_caller_identity.identity.account_id
-  auto_accept   =  true
+  peer_vpc_id   = var.default_vpc_id
+  vpc_id        = aws_vpc.main.id
+  auto_accept   = true
 
 }
 
