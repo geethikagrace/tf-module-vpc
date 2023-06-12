@@ -54,9 +54,12 @@ resource "aws_route" "ngw" {
   destination_cidr_block =  "0.0.0.0/0"
 }
 
+resource "aws_vpc_peering_connection" "peer" {
+  vpc_id        = aws_vpc.main.id
+  peer_vpc_id   = var.default_vpc_id
+  peer_owner_id = data.aws_caller_identity.identity.account_id
+  auto_accept   =  true
 
-output "ngw" {
-  value = aws_nat_gateway.ngw
 }
 
 
